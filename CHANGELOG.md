@@ -1,8 +1,21 @@
-## 2.0.0
+## 2.1.0
 
 - Added MacOS platform (webview_flutter)
 - Updated dependencies
 - Updated example
+
+## 2.0.2
+
+* Fix initialUrl not working on mobile
+
+## 2.0.1
+
+* Added transparent background color to the native webview
+
+## 2.0.0
+
+* Updated dependencies to latest versions
+* Updated to Dart >=3.0.0 <4.0.0
 
 ## 1.6.0
 

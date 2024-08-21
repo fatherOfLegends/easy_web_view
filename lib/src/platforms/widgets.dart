@@ -30,7 +30,7 @@ class WidgetsWebViewState extends WebViewState<WidgetsWebView> {
   @override
   Widget builder(BuildContext context, Size size, String contents) {
     final options = widget.options.widgets;
-    Widget child = wv.HtmlWidget(
+    final Widget child = wv.HtmlWidget(
       contents.toHtml(),
       buildAsync: options.buildAsync,
       enableCaching: options.enableCaching,
@@ -48,9 +48,9 @@ class WidgetsWebViewState extends WebViewState<WidgetsWebView> {
       textStyle: options.textStyle,
     );
     if (options.isSelectable) {
-      child = SelectionArea(
-        child: child,
+      return SelectionArea(
         onSelectionChanged: options.onSelectionChanged,
+        child: child,
       );
     }
     return child;

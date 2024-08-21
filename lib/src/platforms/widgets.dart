@@ -30,24 +30,29 @@ class WidgetsWebViewState extends WebViewState<WidgetsWebView> {
   @override
   Widget builder(BuildContext context, Size size, String contents) {
     final options = widget.options.widgets;
-    return wv.HtmlWidget(
+    final Widget child = wv.HtmlWidget(
       contents.toHtml(),
       buildAsync: options.buildAsync,
       enableCaching: options.enableCaching,
       factoryBuilder: options.factoryBuilder,
-      isSelectable: options.isSelectable,
       key: widget.key,
       baseUrl: options.baseUrl,
       customStylesBuilder: options.customStylesBuilder,
       customWidgetBuilder: options.customWidgetBuilder,
       onErrorBuilder: options.onErrorBuilder,
       onLoadingBuilder: options.onLoadingBuilder,
-      onSelectionChanged: options.onSelectionChanged,
       onTapImage: options.onTapImage,
       onTapUrl: options.onTapUrl,
       rebuildTriggers: options.rebuildTriggers,
       renderMode: options.renderMode,
       textStyle: options.textStyle,
     );
+    if (options.isSelectable) {
+      return SelectionArea(
+        onSelectionChanged: options.onSelectionChanged,
+        child: child,
+      );
+    }
+    return child;
   }
 }
